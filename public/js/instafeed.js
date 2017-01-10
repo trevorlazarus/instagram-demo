@@ -8,7 +8,6 @@
   var app = angular.module('instafeed', []);
   app.factory('InstagramAPI', ['$http', function($http) {
     return {
-        var endpoint = 'https://api.instagram.com/v1/users/';
       fetchPhotos : function(callback) {
         var endpoint = 'https://api.instagram.com/v1/users/';
         endpoint += user_id;
@@ -26,14 +25,11 @@
       }
     }
   }]);
-
   app.controller('ShowImages', function($scope, InstagramAPI) {
     $scope.layout = 'grid';
     $scope.data = {};
     $scope.pics = [];
-
     InstagramAPI.fetchPhotos(function(data) {
       $scope.pics = data;
     });
   });
-})();
